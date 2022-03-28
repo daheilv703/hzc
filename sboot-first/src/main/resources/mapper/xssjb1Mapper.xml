@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.vrgv.dao.xssjb1Mapper">
+  <resultMap id="BaseResultMap" type="cn.vrgv.pojo.xssjb1">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+	<result column="bianhao" jdbcType="VARCHAR" property="bianhao" />
+	<result column="xiangmu" jdbcType="VARCHAR" property="xiangmu" />
+	<result column="hangye" jdbcType="VARCHAR" property="hangye" />
+	<result column="hetongfang" jdbcType="VARCHAR" property="hetongfang" />
+	<result column="quyu" jdbcType="VARCHAR" property="quyu" />
+	<result column="chengshi" jdbcType="VARCHAR" property="chengshi" />
+	<result column="chuangjianshijian" jdbcType="TIMESTAMP" property="chuangjianshijian" />
+	<result column="laiyuan" jdbcType="VARCHAR" property="laiyuan" />
+	<result column="jilv" jdbcType="VARCHAR" property="jilv" />
+	<result column="chanpinleixing" jdbcType="VARCHAR" property="chanpinleixing" />
+	<result column="cankaoxiangmu" jdbcType="VARCHAR" property="cankaoxiangmu" />
+	<result column="yingjian" jdbcType="VARCHAR" property="yingjian" />
+	<result column="xiaoshouleixing" jdbcType="VARCHAR" property="xiaoshouleixing" />
+	<result column="caigoujiedian" jdbcType="TIMESTAMP" property="caigoujiedian" />
+	<result column="jine" jdbcType="VARCHAR" property="jine" />
+	<result column="jieduan" jdbcType="VARCHAR" property="jieduan" />
+	<result column="beijingmiaoshu" jdbcType="VARCHAR" property="beijingmiaoshu" />
+	<result column="fuzeren" jdbcType="VARCHAR" property="fuzeren" />
+	<result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+	<result column="createuser" jdbcType="VARCHAR" property="createuser" />
+	<result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+	<result column="updateuser" jdbcType="VARCHAR" property="updateuser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bianhao, xiangmu, hangye, hetongfang, quyu, chengshi, chuangjianshijian, laiyuan, 
+    jilv, chanpinleixing, cankaoxiangmu, yingjian, xiaoshouleixing, caigoujiedian, jine, 
+    jieduan, beijingmiaoshu, fuzeren, createtime, createuser, updatetime, updateuser
+  </sql>
+  <select id="selectAll" parameterType="cn.vrgv.pojo.xssjb1" resultMap="BaseResultMap">
+	select 
+	 <include refid="Base_Column_List" />
+	from XIAOSHOU_SHANGJI_1
+	<where> 
+		<if test="id != null and id != ''">
+            and id=#{id}
+        </if>
+	</where>
+  </select>
+  
+  <update id="updateOne" parameterType="cn.vrgv.pojo.xssjb1" >
+	  update XIAOSHOU_SHANGJI_1
+	    <set>
+			<if test="bianhao != null">bianhao=#{bianhao},</if>
+			<if test="xiangmu != null">xiangmu=#{xiangmu},</if>
+			<if test="hangye != null">hangye=#{hangye},</if>
+			<if test="hetongfang != null">hetongfang=#{hetongfang},</if>
+			<if test="quyu != null">quyu=#{quyu},</if>
+			<if test="chengshi != null">chengshi=#{chengshi},</if>
+			<if test="chuangjianshijian != null">chuangjianshijian=#{chuangjianshijian},</if>
+			<if test="laiyuan != null">laiyuan=#{laiyuan},</if>
+			<if test="jilv != null">jilv=#{jilv},</if>
+			<if test="chanpinleixing != null">chanpinleixing=#{chanpinleixing},</if>
+			<if test="cankaoxiangmu != null">cankaoxiangmu=#{cankaoxiangmu},</if>
+			<if test="yingjian != null">yingjian=#{yingjian},</if>
+			<if test="xiaoshouleixing != null">xiaoshouleixing=#{xiaoshouleixing},</if>
+			<if test="caigoujiedian != null">caigoujiedian=#{caigoujiedian},</if>
+			<if test="jine != null">jine=#{jine},</if>
+			<if test="jieduan != null">jieduan=#{jieduan},</if>
+			<if test="beijingmiaoshu != null">beijingmiaoshu=#{beijingmiaoshu},</if>
+			<if test="fuzeren != null">fuzeren=#{fuzeren},</if>
+			<if test="createtime != null">createtime=#{createtime},</if>
+			<if test="createuser != null">createuser=#{createuser},</if>
+			<if test="updatetime != null">updatetime=#{updatetime},</if>
+			<if test="updateuser != null">updateuser=#{updateuser}</if>
+	    </set>
+	  where id=#{id}
+  </update>
+  
+	<insert id="insertOne"  parameterType="cn.vrgv.pojo.xssjb1" >
+	    insert into XIAOSHOU_SHANGJI_1 values (
+	    #{id},
+		#{bianhao},
+		#{xiangmu},
+		#{hangye},
+		#{hetongfang},
+		#{quyu},
+		#{chengshi},
+		#{chuangjianshijian},
+		#{laiyuan},
+		#{jilv},
+		#{chanpinleixing},
+		#{cankaoxiangmu},
+		#{yingjian},
+		#{xiaoshouleixing},
+		#{caigoujiedian},
+		#{jine},
+		#{jieduan},
+		#{beijingmiaoshu},
+		#{fuzeren},
+		#{createtime},
+		#{createuser},
+		#{updatetime},
+		#{updateuser}
+	  )
+	</insert>
+  <delete id="deleteOne" parameterType="java.lang.String"> 
+    delete from XIAOSHOU_SHANGJI_1 where id = #{id} 
+  </delete> 
+</mapper>

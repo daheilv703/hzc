@@ -1,0 +1,79 @@
+# 注意配置的时候把下面地址带有"加"字的去掉，加这个字是因为"/加*"会影响排版
+
+server:
+  port: 9090
+
+spring:
+  datasource:
+    # 配置当前数据源类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 配置MySQL的驱动程序类
+    driver-class-name: com.mysql.jdbc.Driver
+    # 数据库连接地址(以MySql为例)
+    url: jdbc:mysql://test.heals.net.cn:3308/VRGV_SCB?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    # 数据库对应的用户名
+    username: root
+    # 数据库对应的密码
+    password: lv@2021
+    # 配置druid数据库连接池
+    druid:
+      # 配置监控统计拦截的filters，stat是sql监控，wall是防火墙(如果不添加则监控无效)，添加log4j需要引入jar包
+      filters: stat,wall,log4j,config
+      # 连接池最大活跃连接数
+      max-active: 5
+      # 连接池初始化连接数量
+      initial-size: 1
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 连接池最小空闲数
+      min-idle: 1
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000 
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 指定空闲连接检查、废弃连接清理、空闲连接池大小调整之间的操作时间间隔
+      time-between-eviction-runs-millis: 60000
+      # 指定一个空闲连接最少空闲多久后可被清除
+      min-evictable-idle-time-millis: 300000
+      # 连接是否有效的查询语句
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      #打开 PSCache，并且指定每个连接上 PSCache 的大小
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20
+      # 配置 DruidStatFilter
+      web-stat-filter:
+        enabled: true #\u662F\u5426\u542F\u7528StatFilter\u9ED8\u8BA4\u503Ctrue
+        # 排除一些不必要的url，比如.js,/jslib/等
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        # 过滤规则
+        url-pattern: 
+      # 配置 DruidStatViewServlet
+      stat-view-servlet:
+        #手动重置监控数据
+        enabled: true
+        url-pattern: /druid
+        # IP白名单，没有配置或者为空，则允许所有访问
+        allow:
+        #IP黑名单，若白名单也存在，则优先使用
+        deny: xx.xx.xx.xx
+        # 配置druid登录用户名、密码
+        login-username: admin
+        login-password: admin
+        # HTML 中 Reset All 按钮
+        reset-enable: true
+
+mybatis:
+  # 配置mapper.xml路径
+  mapper-locations: classpath:mapper/*.xml
+  # 指定实体类扫描包
+  type-aliases-package: cn.dao
+
+# logging:
+#   level:
+#     # 需要打印log日志(有sql执行)的包
+#     cn.dao: debug
+
